@@ -25,7 +25,7 @@ public class Main {
         System.out.println();
 
         System.out.println("Задача 6");
-        System.out.println(twoTwo(new int[]{8, 5, 4, 2, 2, 8, 4, 6, 4, 9, 8, 4, 61, 4}));
+        System.out.println(twoTwo(new int[]{8, 5, 0, 8, 4, 6, 4, 9, 8, 4, 61, 4}));
         System.out.println();
 
         System.out.println("Задача 7");
@@ -35,16 +35,14 @@ public class Main {
         System.out.println("Задача 8");
         naturalDivisors();
         System.out.println();
-
-
     }
+
 
     public static void naturalDivisors() {
         int number = inputCheckNumber();
 
-        for(int i = 1; i <= number ; i++)
-        {
-            if (number%i == 0)
+        for (int i = 1; i <= number; i++) {
+            if (number % i == 0)
                 System.out.print(i + " ");
         }
 
@@ -55,22 +53,15 @@ public class Main {
         int arraySize = inputCheckNumber();
 
         int[] array = new int[arraySize];
+        int firstHalfModSum = 0;
+        int secondHalfModSum = 0;
 
         for (int i = 0; i < array.length; i++) {
             array[i] = getRandomInteger(-5, 5);
-        }
-
-
-        int firstHalfModSum = 0;
-
-        for (int i = 0; i < array.length / 2; i++) {
-            firstHalfModSum += Math.abs(array[i]);
-        }
-
-        int secondHalfModSum = 0;
-
-        for (int i = arraySize / 2; i < array.length; i++) {
-            secondHalfModSum += Math.abs(array[i]);
+            if (i < arraySize / 2)
+                firstHalfModSum += Math.abs(array[i]);
+            else
+                secondHalfModSum += Math.abs(array[i]);
         }
 
         if (firstHalfModSum == secondHalfModSum)
@@ -95,6 +86,26 @@ public class Main {
     }
 
     public static boolean twoTwo(int[] nums) {
+        boolean checker = false;
+
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == 2) {
+                int counter = 0;
+                for (; i < nums.length; i++) {
+
+                    if (nums[i] == 2)
+                        counter++;
+                    else
+                        break;
+                }
+                if (counter % 2 != 0)
+                    return false;
+                checker = true;
+            }
+        }
+        return checker;
+    }
+/*
 
         for (int i = 1; i < nums.length - 1; i++)
             if (nums[i] == 2 && nums[i + 1] != 2 && nums[i - 1] != 2) {
@@ -105,8 +116,7 @@ public class Main {
             if (nums[i] == 2 && nums[i + 1] == 2) {
                 return true;
             }
-        return false;
-    }
+*/
 
 
     public static int teenSum(int a, int b) {
