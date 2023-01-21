@@ -60,6 +60,7 @@ public class Main {
             array[i] = getRandomInteger(-5, 5);
         }
 
+
         int firstHalfModSum = 0;
 
         for (int i = 0; i < array.length / 2; i++) {
