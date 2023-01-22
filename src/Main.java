@@ -24,8 +24,19 @@ public class Main {
         System.out.println(has77(new int[]{8, 5, 4, 2, 7, 7, 6, 4, 9, 8, 4, 61, 4}));
         System.out.println();
 
+        int[] arrayTwo = getRandomArray(0, 100, 100000);
         System.out.println("Задача 6");
-        System.out.println(twoTwo(new int[]{8, 5, 0, 8, 4, 6, 4, 9, 8, 4, 61, 4}));
+
+        final long startTime = System.nanoTime();
+        System.out.println(twoTwo(arrayTwo));
+        final long endTime = System.nanoTime();
+        System.out.println(endTime - startTime);
+
+        final long startTime2 = System.nanoTime();
+        System.out.println(twoTwo2(arrayTwo));
+        final long endTime2 = System.nanoTime();
+        System.out.println(endTime2 - startTime2);
+
         System.out.println();
 
         System.out.println("Задача 7");
@@ -85,6 +96,7 @@ public class Main {
         return false;
     }
 
+
     public static boolean twoTwo(int[] nums) {
         boolean checker = false;
 
@@ -103,10 +115,13 @@ public class Main {
                 checker = true;
             }
         }
+
+
         return checker;
     }
-/*
 
+
+    public static boolean twoTwo2(int[] nums) {
         for (int i = 1; i < nums.length - 1; i++)
             if (nums[i] == 2 && nums[i + 1] != 2 && nums[i - 1] != 2) {
                 return false;
@@ -116,7 +131,8 @@ public class Main {
             if (nums[i] == 2 && nums[i + 1] == 2) {
                 return true;
             }
-*/
+        return false;
+    }
 
 
     public static int teenSum(int a, int b) {
@@ -179,6 +195,14 @@ public class Main {
 
 
         return number;
+    }
+
+    public static int[] getRandomArray(int min, int max, int size) {
+        int[] array = new int[size];
+        for (int i = 0; i < size; i++) {
+            array[i] = getRandomInteger(min, max);
+        }
+        return array;
     }
 }
 
